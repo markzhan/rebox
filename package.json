@@ -1,0 +1,54 @@
+{
+  "name": "relib",
+  "version": "0.1.0",
+  "description": "A regular expression library for node.js",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node ./test/test.ip.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markzhan/relib"
+  },
+  "author": {
+    "name": "Mark Zhan",
+    "email": "markzhann@qq.com",
+    "url": "http://markzhan.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "keywords": [
+    "re",
+    "regex",
+    "regexp",
+    "match",
+    "text",
+    "test",
+    "find",
+    "ip",
+    "string",
+    "pattern",
+    "internet",
+    "protocol",
+    "validate",
+    "address",
+    "check",
+    "regular",
+    "expression"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/markzhan/relib/issues"
+  },
+  "homepage": "https://github.com/markzhan/relib",
+  "dependencies": {
+    "ip-regex": "^1.0.2"
+  },
+  "devDependencies": {
+    "ava": "0.0.4"
+  }
+}
