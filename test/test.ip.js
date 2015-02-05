@@ -107,10 +107,13 @@ describe('ip', function(){
 		});
 	});
 
-	it('ip.is(), ip.v4(), ip.v6()', function(){
+	it('ip.is()', function(){
 		assert.ok(ip.is('192.168.0.1'));
 		assert.ok(ip.is('1:2:3:4:5:6:7:8'));
 		assert.ok(!ip.is('unicorn 192.168.0.1'));
+	});
+
+	it('ip.v4(), ip.v6()', function(){
 		assert.ok(ip.v4('192.168.0.1'));
 		assert.ok(!ip.v4('1:2:3:4:5:6:7:8'));
 		assert.ok(ip.v6('1:2:3:4:5:6:7:8'));
