@@ -1,12 +1,9 @@
-# relib
-
-[![Build Status](https://travis-ci.org/markzhan/relib.svg?branch=master)](https://travis-ci.org/markzhan/relib)
-[![NPM Downloads](https://img.shields.io/npm/dm/relib.svg?style=flat)](https://www.npmjs.org/package/relib)
+# relib [![Build Status](https://travis-ci.org/markzhan/relib.svg?branch=master)](https://travis-ci.org/markzhan/relib)
 
 A regular expression library for node.js
 
 
-## Install
+## Installation
 
 ```sh
 $ npm install relib
@@ -55,14 +52,15 @@ var domain = require('relib').domain;
 ...
 
 
-## Run tests
+## Contributions
+
+To run the tests for **relib** simply run:
 ```sh
-npm i -d && npm test  # install dev dependencies and test
+npm i && npm test  # install dev dependencies and test
 ```
+For bugs and feature requests, [please create an issue](https://github.com/markzhan/relib/issues).
 
-## Contributing
-
-Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/markzhan/relib/issues).
+Pull requests and stars are always welcome.
 
 1. Fork it
 2. Create your feature branch (git checkout -b my-new-feature)
@@ -70,12 +68,9 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 4. Push to the branch (git push origin my-new-feature)
 5. Create new Pull Request
 
-
-## Author
-
-* Mark Zhan ([@markzhan](https://github.com/markzhan))
+[contributors](https://github.com/markzhan/relib/graphs/contributors)
 
 
 ## License
 
-MIT © [Mark Zhan](http://markzhan.com)
+MIT © 2015 [Mark Zhan](http://markzhan.com).
