@@ -1,4 +1,4 @@
-# relib [![Build Status](https://travis-ci.org/markzhan/relib.svg?branch=master)](https://travis-ci.org/markzhan/relib)
+# relib [![Build Status](https://travis-ci.org/markzhan/relib.svg?branch=master)](https://travis-ci.org/markzhan/relib) [![Coverage Status](https://coveralls.io/repos/markzhan/relib/badge.svg)](https://coveralls.io/r/markzhan/relib)
 
 A regular expression library for node.js
 
