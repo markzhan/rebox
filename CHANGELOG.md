@@ -1,5 +1,9 @@
 # RELib Change Log
 
+## 0.1.8 (2015-02-07)
+- + 新增 API re() 返回正则表达式
+- + 加入 URL API : is, contain, match, re
+
 ## 0.1.2 (2015-02-04)
 - + 加入 DOMAIN API：is, contain, match
 

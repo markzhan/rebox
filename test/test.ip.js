@@ -59,68 +59,75 @@ var v6not = [
 ];
 
 describe('ip', function(){
-	it('ip.ip(v4)', function(){
-		v4.forEach(function (el) {
-			assert.ok(ip.ip({exact: true}).test(el));
+	describe('ip', function(){
+		it('(v4)', function(){
+			v4.forEach(function (el) {
+				assert.ok(ip.ip({exact: true}).test(el));
+			});
+			v4.forEach(function (el) {
+				assert.ok((ip.ip().exec('foo ' + el + ' bar') || [])[0] === el);
+			});
+			v4not.forEach(function (el) {
+				assert.ok(!ip.ip({exact: true}).test(el));
+			});
 		});
-		v4.forEach(function (el) {
-			assert.ok((ip.ip().exec('foo ' + el + ' bar') || [])[0] === el);
+
+		it('(v6)', function(){
+			v6.forEach(function (el) {
+				assert.ok(ip.ip({exact: true}).test(el));
+			});
+			v6.forEach(function (el) {
+				assert.ok((ip.ip().exec('foo ' + el + ' bar') || [])[0] === el);
+			});
+			v6not.forEach(function (el) {
+				assert.ok(!ip.ip({exact: true}).test(el));
+			});
 		});
-		v4not.forEach(function (el) {
-			assert.ok(!ip.ip({exact: true}).test(el));
+
+		it('.v4(v4)', function(){
+			v4.forEach(function (el) {
+				assert.ok(ip.ip.v4({exact: true}).test(el));
+			});
+			v4.forEach(function (el) {
+				assert.ok((ip.ip.v4().exec('foo ' + el + ' bar') || [])[0] === el);
+			});
+			v4not.forEach(function (el) {
+				assert.ok(!ip.ip.v4({exact: true}).test(el));
+			});
+		});
+
+		it('.v6(v6)', function(){
+			v6.forEach(function (el) {
+				assert.ok(ip.ip.v6({exact: true}).test(el));
+			});
+			v6.forEach(function (el) {
+				assert.ok((ip.ip.v6().exec('foo ' + el + ' bar') || [])[0] === el);
+			});
+			v6not.forEach(function (el) {
+				assert.ok(!ip.ip.v6({exact: true}).test(el));
+			});
 		});
 	});
 
-	it('ip.ip(v6)', function(){
-		v6.forEach(function (el) {
-			assert.ok(ip.ip({exact: true}).test(el));
-		});
-		v6.forEach(function (el) {
-			assert.ok((ip.ip().exec('foo ' + el + ' bar') || [])[0] === el);
-		});
-		v6not.forEach(function (el) {
-			assert.ok(!ip.ip({exact: true}).test(el));
-		});
-	});
-
-	it('ip.ip.v4(v4)', function(){
-		v4.forEach(function (el) {
-			assert.ok(ip.ip.v4({exact: true}).test(el));
-		});
-		v4.forEach(function (el) {
-			assert.ok((ip.ip.v4().exec('foo ' + el + ' bar') || [])[0] === el);
-		});
-		v4not.forEach(function (el) {
-			assert.ok(!ip.ip.v4({exact: true}).test(el));
-		});
-	});
-
-	it('ip.ip.v6(v6)', function(){
-		v6.forEach(function (el) {
-			assert.ok(ip.ip.v6({exact: true}).test(el));
-		});
-		v6.forEach(function (el) {
-			assert.ok((ip.ip.v6().exec('foo ' + el + ' bar') || [])[0] === el);
-		});
-		v6not.forEach(function (el) {
-			assert.ok(!ip.ip.v6({exact: true}).test(el));
-		});
-	});
-
-	it('ip.is()', function(){
+	it('is(string)', function(){
 		assert.ok(ip.is('192.168.0.1'));
 		assert.ok(ip.is('1:2:3:4:5:6:7:8'));
 		assert.ok(!ip.is('unicorn 192.168.0.1'));
 	});
 
-	it('ip.v4(), ip.v6()', function(){
+	it('re([{exact: true}])', function(){
+		assert.ok(ip.re().test('unicorn 192.168.0.1'));
+		assert.ok(!ip.re({exact: true}).test('unicorn 192.168.0.1'));
+	});
+
+	it('v4(string), v6(string)', function(){
 		assert.ok(ip.v4('192.168.0.1'));
 		assert.ok(!ip.v4('1:2:3:4:5:6:7:8'));
 		assert.ok(ip.v6('1:2:3:4:5:6:7:8'));
 		assert.ok(!ip.v6('192.168.0.1'));
 	});
 
-	it('ip.contain(), ip.match()', function(){
+	it('contain(string), match(string)', function(){
 		assert.ok(ip.contain('unicorn 192.168.0.1'));
 		assert.ok(ip.contain('unicorn 1:2:3:4:5:6:7:8'));
 		assert.ok(ip.match('unicorn 192.168.0.1 cake 1:2:3:4:5:6:7:8 rainbow'));

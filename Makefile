@@ -1,5 +1,5 @@
 test:
-	./node_modules/.bin/mocha --reporter list
+	./node_modules/.bin/mocha 
 
 cov test-cov:
 	./node_modules/.bin/istanbul cover _mocha

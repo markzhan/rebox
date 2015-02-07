@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/markzhan/relib.svg?branch=master)](https://travis-ci.org/markzhan/relib)
 [![Coverage Status](https://coveralls.io/repos/markzhan/relib/badge.svg)](https://coveralls.io/r/markzhan/relib)
+[![NPM Downloads](https://img.shields.io/npm/dm/relib.svg?style=flat)](https://www.npmjs.org/package/relib)
 
 
 # relib
@@ -15,44 +16,94 @@ or
 $ npm install relib --save
 ```
 
+## Based on
+
+- https://github.com/sindresorhus/ip-regex
+- https://github.com/johnotander/domain-regex
+- https://github.com/kevva/url-regex
+...
+
+
 ## Usage
 
 ```js
-var re = require('relib');
-re.ip.is('192.168.0.1'); // true
-re.ip.is('1:2:3:4:5:6:7:8'); // true
-re.domain.is('markzhan.com'); // true
-re.domain.is('domain'); // false
+var relib = require('relib');
+
+relib.ip.is('192.168.0.1'); // true
+relib.ip.is('1:2:3:4:5:6:7:8'); // true
+
+relib.domain.is('github.com'); // true
+relib.domain.is('domain'); // false
 ```
 or
 ```js
 var ip = require('relib').ip;
 ip.v6('192.168.0.1'); // false
-ip.v6('1:2:3:4:5:6:7:8'); // true
 ip.v4('1:2:3:4:5:6:7:8'); // false
-ip.v4('192.168.0.1'); // true
+...
+var domain = require('relib').domain;
+domain.is('github.com'); // true
+domain.is('domain'); // false
 ```
 
 ## API
 
 ### IP Address Regex
-```js
-var ip = require('relib').ip;
-```
+
 * ip.v4(string)  - Check if a string is IPv4.
 * ip.v6(string)  - Check if a string is IPv6.
 * ip.is(string)  - Check if a string is IPv4 or IPv6.
-* ip.match(string)  - Return an array if a string contains IPv4 or IPv6.
 * ip.contain(string)  - Check if a string contains IPv4 or IPv6.
+* ip.match(string)  - Return an array if a string contains IPv4 or IPv6.
+* ip.re([{exact: true}])  - Returns a regex for matching both IPv4 and IPv6.
+```js
+var ip = require('relib').ip;
+
+ip.v4('192.168.0.1'); // true
+ip.is('1:2:3:4:5:6:7:8'); // true
+ip.v6('1:2:3:4:5:6:7:8'); // true
+ip.v4('1:2:3:4:5:6:7:8'); // false
+ip.contain('unicorn 192.168.0.1 cake 1:2:3:4:5:6:7:8 rainbow'); // true
+ip.match('unicorn 192.168.0.1 cake 1:2:3:4:5:6:7:8 rainbow'); // ['192.168.0.1', '1:2:3:4:5:6:7:8']
+ip.re({exact: true}).test('unicorn 192.168.0.1'); // false
+ip.re().test('unicorn 192.168.0.1'); // true
+```
 
 ### Domain Regex with IDN Support
+
+* domain.is(string)  - Check if a string is Domain.
+* domain.contain(string)  - Check if a string contains Domain.
+* domain.match(string)  - Return an array if a string contains Domain.
+* domain.re([{exact: true}])  - Return a regex for matching domain.
 ```js
 var domain = require('relib').domain;
-```
-* domain.is(string)  - Check if a string is Domain.
-* domain.match(string)  - Return an array if a string contains Domain.
-* domain.contain(string)  - Check if a string contains Domain.
 
+domain.is('example.com'); // true
+domain.is('unicorn example.com'); // false
+domain.contain('unicorn example.com cake a.sub.domain.org rainbow'); // true
+domain.match('unicorn example.com cake a.sub.domain.org rainbow'); // ['example.com', 'a.sub.domain.org']
+domain.re({exact: true}).test('unicorn example.com'); // false
+domain.re().test('unicorn example.com'); // true
+```
+
+### URLs Regex
+
+* url.is(string)  - Check if a string is url.
+* url.contain(string)  - Check if a string contains url.
+* url.match(string)  - Return an array if a string contains url.
+* url.re([{exact: true}]) - Return a regex for matching URLs.
+```js
+var url = require('relib').url;
+
+url.is('https://github.com'); // true
+url.contain('foo github.com bar google.com'); // true
+url.match('foo https://github.com bar google.com'); // ['https://github.com', 'google.com']
+
+url.re().test('github.com foo bar'); // true
+url.re({exact: true}).test('github.com'); // true
+url.re({exact: true}).test('github.com foo bar'); // false
+'foo github.com bar google.com'.match(url.re()); // ['github.com', 'google.com']
+```
 ...
 
 
@@ -73,9 +124,6 @@ Pull requests and stars are always welcome.
 5. Create new Pull Request
 
 [Contributors](https://github.com/markzhan/relib/graphs/contributors)
-
-## Reference
-...
 
 
 ## License

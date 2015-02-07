@@ -34,19 +34,19 @@ var containDomains = [
 
 describe('domain', function() {
 
-  it('is(domain)', function() {
+  it('is(domainString)', function() {
     domains.forEach(function(name){
       assert.ok(domain.is(name));
     });
   });
 
-  it('is(IDNs)', function() {
+  it('is(IDNsDomainString)', function() {
     assert.ok(domain.is('something.組织.hk'));
     assert.ok(domain.is('組織.tw'));
     assert.ok(domain.is('上海.cn'));
   });
 
-  it('is(not)', function() {
+  it('is(notDomainString)', function() {
     notDomains.forEach(function(name){
       assert.ok(!domain.is(name));
     });
@@ -55,14 +55,19 @@ describe('domain', function() {
     });
   });
 
-  it('contain()', function(){
+  it('re([{exact: true}])', function(){
+    assert.equal(typeof /re/, typeof domain.re());
+    assert.equal(typeof /re/, typeof domain.re({exact: true}));
+  });
+
+  it('contain(string)', function(){
     containDomains.forEach(function(name){
       assert.ok(domain.contain(name));
     });
     assert.ok(!domain.contain('abc wwwabccom'));
   });
 
-  it('match()', function(){
+  it('match(string)', function(){
     assert.ok(domain.match('abc www.abc.com'));
     assert.ok(!domain.match('abc wwwabccom'));
   });
