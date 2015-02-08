@@ -16,14 +16,6 @@ or
 $ npm install relib --save
 ```
 
-## Based on
-
-- https://github.com/sindresorhus/ip-regex
-- https://github.com/johnotander/domain-regex
-- https://github.com/kevva/url-regex
-...
-
-
 ## Usage
 
 ```js
@@ -38,10 +30,12 @@ relib.domain.is('domain'); // false
 or
 ```js
 var ip = require('relib').ip;
+
 ip.v6('192.168.0.1'); // false
 ip.v4('1:2:3:4:5:6:7:8'); // false
 ...
 var domain = require('relib').domain;
+
 domain.is('github.com'); // true
 domain.is('domain'); // false
 ```
@@ -50,12 +44,13 @@ domain.is('domain'); // false
 
 ### IP Address Regex
 
-* ip.v4(string)  - Check if a string is IPv4.
-* ip.v6(string)  - Check if a string is IPv6.
-* ip.is(string)  - Check if a string is IPv4 or IPv6.
-* ip.contain(string)  - Check if a string contains IPv4 or IPv6.
-* ip.match(string)  - Return an array if a string contains IPv4 or IPv6.
-* ip.re([{exact: true}])  - Returns a regex for matching both IPv4 and IPv6.
+* **ip.v4(string)**  - Check if a string is IPv4.
+* **ip.v6(string)**  - Check if a string is IPv6.
+* **ip.is(string)**  - Check if a string is IPv4 or IPv6.
+* **ip.contain(string)**  - Check if a string contains IPv4 or IPv6.
+* **ip.match(string)**  - Return an array if a string contains IPv4 or IPv6.
+* **ip.re([{exact: true}])**  - Returns a regex for matching both IPv4 and IPv6.
+
 ```js
 var ip = require('relib').ip;
 
@@ -71,10 +66,11 @@ ip.re().test('unicorn 192.168.0.1'); // true
 
 ### Domain Regex with IDN Support
 
-* domain.is(string)  - Check if a string is Domain.
-* domain.contain(string)  - Check if a string contains Domain.
-* domain.match(string)  - Return an array if a string contains Domain.
-* domain.re([{exact: true}])  - Return a regex for matching domain.
+* **domain.is(string)**  - Check if a string is domain.
+* **domain.contain(string)**  - Check if a string contains domain.
+* **domain.match(string)**  - Return an array if a string contains domain.
+* **domain.re([{exact: true}])**  - Return a regex for matching domain.
+
 ```js
 var domain = require('relib').domain;
 
@@ -88,22 +84,47 @@ domain.re().test('unicorn example.com'); // true
 
 ### URLs Regex
 
-* url.is(string)  - Check if a string is url.
-* url.contain(string)  - Check if a string contains url.
-* url.match(string)  - Return an array if a string contains url.
-* url.re([{exact: true}]) - Return a regex for matching URLs.
+* **url.is(string)**  - Check if a string is URL.
+* **url.contain(string)**  - Check if a string contains URL.
+* **url.match(string)**  - Return an array if a string contains URL.
+* **url.re([{exact: true}])** - Return a regex for matching URLs.
+
 ```js
 var url = require('relib').url;
 
 url.is('https://github.com'); // true
 url.contain('foo github.com bar google.com'); // true
 url.match('foo https://github.com bar google.com'); // ['https://github.com', 'google.com']
-
 url.re().test('github.com foo bar'); // true
-url.re({exact: true}).test('github.com'); // true
 url.re({exact: true}).test('github.com foo bar'); // false
-'foo github.com bar google.com'.match(url.re()); // ['github.com', 'google.com']
 ```
+
+### Email Address Regex
+
+* **email.is(string)**  - Check if a string is email address.
+* **email.contain(string)**  - Check if a string contains email address.
+* **email.match(string)**  - Return an array if a string contains email address.
+* **email.re([{exact: true}])** - Return a regex for matching email addresses.
+
+```js
+var email = require('relib').email;
+
+email.is('sindresorhus@gmail.com'); // true
+email.contain('unicorn sindresorhus@gmail.com'); // true
+email.match('unicorn sindresorhus@gmail.com cake john@doe.com rainbow'); // ['sindresorhus@gmail.com', 'john@doe.com']
+email.re().test('unicorn sindresorhus@gmail.com'); // true
+email.re({exact: true}).test('unicorn sindresorhus@gmail.com'); // false
+```
+
+...
+
+
+## References
+
+- https://github.com/sindresorhus/ip-regex
+- https://github.com/johnotander/domain-regex
+- https://github.com/kevva/url-regex
+- https://github.com/sindresorhus/email-regex
 ...
 
 
@@ -115,12 +136,12 @@ npm i && npm test  # install dev dependencies and test
 ```
 For bugs and feature requests, [please create an issue](https://github.com/markzhan/relib/issues).
 
-Pull requests and stars are always welcome.
+Pull requests is always welcome.
 
 1. Fork it
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
+2. Create your feature branch `git checkout -b my-new-feature`
+3. Commit your changes `git commit -am 'Add some feature'`
+4. Push to the branch `git push origin my-new-feature`
 5. Create new Pull Request
 
 [Contributors](https://github.com/markzhan/relib/graphs/contributors)

@@ -1,5 +1,8 @@
 # RELib Change Log
 
+## 0.1.9 (2015-02-08)
+- + 加入 EMAIL API : is, contain, match, re
+
 ## 0.1.8 (2015-02-07)
 - + 新增 API re() 返回正则表达式
 - + 加入 URL API : is, contain, match, re
