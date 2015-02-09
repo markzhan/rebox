@@ -30,19 +30,23 @@ relib.domain.is('domain'); // false
 or
 ```js
 var ip = require('relib').ip;
-
-ip.v6('192.168.0.1'); // false
-ip.v4('1:2:3:4:5:6:7:8'); // false
+ip.is('192.168.0.1'); // true
+ip.is('1:2:3:4:5:6:7:8'); // true
 ...
 var domain = require('relib').domain;
-
 domain.is('github.com'); // true
 domain.is('domain'); // false
 ```
 
 ## API
 
-### IP Address Regex
+- [IP Address Regex](#ip)
+- [Domain Regex with IDN Support](#domain)
+- [URLs Regex](#url)
+- [Email Address Regex](#email)
+...
+
+### IP Address Regex <a name='ip'></a>
 
 * **ip.v4(string)**  - Check if a string is IPv4.
 * **ip.v6(string)**  - Check if a string is IPv6.
@@ -64,7 +68,7 @@ ip.re({exact: true}).test('unicorn 192.168.0.1'); // false
 ip.re().test('unicorn 192.168.0.1'); // true
 ```
 
-### Domain Regex with IDN Support
+### Domain Regex with IDN Support <a name='domain'></a>
 
 * **domain.is(string)**  - Check if a string is domain.
 * **domain.contain(string)**  - Check if a string contains domain.
@@ -82,7 +86,7 @@ domain.re({exact: true}).test('unicorn example.com'); // false
 domain.re().test('unicorn example.com'); // true
 ```
 
-### URLs Regex
+### URLs Regex <a name='url'></a>
 
 * **url.is(string)**  - Check if a string is URL.
 * **url.contain(string)**  - Check if a string contains URL.
@@ -99,7 +103,7 @@ url.re().test('github.com foo bar'); // true
 url.re({exact: true}).test('github.com foo bar'); // false
 ```
 
-### Email Address Regex
+### Email Address Regex <a name='email'></a>
 
 * **email.is(string)**  - Check if a string is email address.
 * **email.contain(string)**  - Check if a string contains email address.

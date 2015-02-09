@@ -8,7 +8,7 @@ var iss = [
 'test@about.museum',
 'test@nominet.org.uk',
 'test.test@sindresorhus.com',
-'test@255.255.255.255',
+'te+st@255.255.255.255',
 'a@sindresorhus.com',
 'test@e.com',
 'test@xn--hxajbheg2az3al.xn--jxalpdlp',
@@ -76,7 +76,7 @@ describe('email', function() {
 
   it('match(string)', function(){
     contains.forEach(function(str){
-      assert.ok(email.contain(str));
+      assert.ok(email.match(str));
     });
   });
 
