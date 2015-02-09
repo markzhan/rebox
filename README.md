@@ -46,7 +46,8 @@ domain.is('domain'); // false
 - [Email Address Regex](#email)
 ...
 
-### IP Address Regex <a name='ip'></a>
+<a name='ip'></a>
+### IP Address Regex
 
 * **ip.v4(string)**  - Check if a string is IPv4.
 * **ip.v6(string)**  - Check if a string is IPv6.
@@ -67,8 +68,8 @@ ip.match('unicorn 192.168.0.1 cake 1:2:3:4:5:6:7:8 rainbow'); // ['192.168.0.1',
 ip.re({exact: true}).test('unicorn 192.168.0.1'); // false
 ip.re().test('unicorn 192.168.0.1'); // true
 ```
-
-### Domain Regex with IDN Support <a name='domain'></a>
+<a name='domain'></a>
+### Domain Regex with IDN Support
 
 * **domain.is(string)**  - Check if a string is domain.
 * **domain.contain(string)**  - Check if a string contains domain.
@@ -85,8 +86,8 @@ domain.match('unicorn example.com cake a.sub.domain.org rainbow'); // ['example.
 domain.re({exact: true}).test('unicorn example.com'); // false
 domain.re().test('unicorn example.com'); // true
 ```
-
-### URLs Regex <a name='url'></a>
+<a name='url'></a>
+### URLs Regex
 
 * **url.is(string)**  - Check if a string is URL.
 * **url.contain(string)**  - Check if a string contains URL.
@@ -102,8 +103,8 @@ url.match('foo https://github.com bar google.com'); // ['https://github.com', 'g
 url.re().test('github.com foo bar'); // true
 url.re({exact: true}).test('github.com foo bar'); // false
 ```
-
-### Email Address Regex <a name='email'></a>
+<a name='email'></a>
+### Email Address Regex
 
 * **email.is(string)**  - Check if a string is email address.
 * **email.contain(string)**  - Check if a string contains email address.
